@@ -1,8 +1,30 @@
 <h1>These Are the Dogs</h1>
 <ul>
   <% @dogs.each do |dog| %>
-    <li><%= link_to dog.name, dog_path(dog) %></li>
+    <li>
+      <%= link_to(dog_path(dog), class: "orange-link") do %>
+        <strong><%= dog.name %></strong> -- <span>Check it out!</span>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 
-<%= link_to "Home", root_path %>
+<!-- Link_to practice! -->
+<%= link_to root_path do %>
+  <%= image_tag 'helper_dog.png', class: "small-image" %>
+<% end %>
+
+<br>
+<%= link_to "About", about_path, class: "orange-link", id: "green-background" %>
+
+<!-- Social Buttons -->
+<br>
+<%= link_to "Facebook", "http://www.facebook.com", target: "_blank", class: "orange-link" %>
+<br>
+
+<!-- Two ways to create the same link -->
+<%= link_to image_tag("twitter.png", class:"small-image"), "http://www.twitter.com", target: "_blank"%>
+
+<%= link_to "http://www.twitter.com", target: "_blank" do %>
+  <%= image_tag("twitter.png", class:"small-image") %>
+<% end %>
